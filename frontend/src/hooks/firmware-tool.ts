@@ -188,20 +188,6 @@ export function useFirmwareTool() {
             flash()
           },
           actionText: 'Retry' 
-          secondAction: {
-            text: 'Download Firmware',
-            action: () => {
-              const file = new Blob([downloadedFilesRef.current[0].binary], { type: 'application/octet-stream' });
-              const url = window.URL.createObjectURL(file);
-              const link = document.createElement('a');
-              link.href = url;
-              link.download = downloadedFilesRef.current[0].infos.url;
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-              window.URL.revokeObjectURL(url);
-            }
-          }
         })
         await disconnect();
         throw e
@@ -243,20 +229,6 @@ export function useFirmwareTool() {
           buildConfig(buildSettings);
         },
         actionText: 'Retry' 
-        secondAction: {
-          text: 'Download Firmware',
-          action: () => {
-            const file = new Blob([downloadedFilesRef.current[0].binary], { type: 'application/octet-stream' });
-            const url = window.URL.createObjectURL(file);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = downloadedFilesRef.current[0].infos.url;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-          }
-        }
       }
   
   
